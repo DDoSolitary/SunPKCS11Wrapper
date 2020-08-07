@@ -1,0 +1,16 @@
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-java@master
+        with:
+          java-version: 11
+          java-package: jdk
+      - run: |
+          ./gradlew jar
+      - if: github.ref == 'refs/heads/master'
+        run: |
+          curl -fsS -T build/libs/SunPKCS11Wrapper.jar -u ddosolitary:${{ secrets.BINTRAY_KEY }} https://api.bintray.com/content/ddosolitary/dev-releases/default/default/SunPKCS11Wrapper.jar
+          curl -fsS -X POST -u ddosolitary:${{ secrets.BINTRAY_KEY }} https://api.bintray.com/content/ddosolitary/dev-releases/default/default/publish
