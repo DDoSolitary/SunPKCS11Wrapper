@@ -6,7 +6,7 @@ This project provides a wrapper class with the old constructor interface, making
 
 ## Usage
 
-1. [Download `SunPKCS11Wrapper.jar`](https://dl.bintray.com/ddosolitary/dev-releases/SunPKCS11Wrapper.jar) and copy it to `<sdk-path>/build-tools/<version>/lib/`.
+1. [Download `SunPKCS11Wrapper.jar`](https://ddosolitary-builds.sourceforge.io/SunPKCS11Wrapper.jar) and copy it to `<sdk-path>/build-tools/<version>/lib/`.
 
 2. **Linux**:  
    In the last line of the file `<sdk-path>/build-tools/<version>/apksigner` (which should be an `exec` command), replace `-jar "$jarpath"` with `-cp "$jarpath;$libdir/SunPKCS11Wrapper.jar" com.android.apksigner.ApkSignerTool`.
